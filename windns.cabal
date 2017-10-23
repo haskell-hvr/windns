@@ -1,0 +1,27 @@
+cabal-version:       1.12
+
+name:                windns
+version:             0.1.0.0
+synopsis:            Domain Name Service (DNS) lookup via the <windns.h>/dnsapi.dll standard library routines
+license:             GPL-3
+license-file:        LICENSE
+author:              Herbert Valerio Riedel
+maintainer:          hvr@gnu.org
+category:            Network
+build-type:          Simple
+extra-source-files:  ChangeLog.md
+                     cbits/hs_windns.h
+
+library
+  exposed-modules:   Network.DNS
+  other-modules:     Network.DNS.FFI
+  build-depends:     base >= 4.8 && < 4.11, bytestring >= 0.10, deepseq >= 1.1 && < 1.5
+  hs-source-dirs:    src
+  default-language:  Haskell2010
+
+  build-tools:       hsc2hs >= 0.67
+
+  include-dirs:      cbits
+
+  -- if !os(windows)
+  --   build-depends:Win32<0
