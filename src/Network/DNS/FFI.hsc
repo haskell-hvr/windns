@@ -68,6 +68,9 @@ data IPv6 = IPv6 !Word64 !Word64
 instance Show IPv6 where
     showsPrec p (IPv6 hi lo) = showParen (p >= 11) (showString "IPv6 0x" . showHex hi . showString " 0x" . showHex lo)
 
+instance NFData IPv6 where
+  rnf (IPv6 _ _) = ()
+
 mkIPv6 :: Word32 -> Word32 -> Word32 -> Word32 -> IPv6
 mkIPv6 a b c d = IPv6 (mkW64 a b) (mkW64 c d)
   where
@@ -79,6 +82,9 @@ mkIPv6 a b c d = IPv6 (mkW64 a b) (mkW64 c d)
 -- represented as @(IPv4 0x7f000001)@.
 data IPv4 = IPv4 !Word32
           deriving (Eq,Ord,Read)
+
+instance NFData IPv4 where
+  rnf (IPv4 _) = ()
 
 mkIPv4 :: Word32 -> IPv4
 mkIPv4 a = IPv4 (byteSwap32 a)
