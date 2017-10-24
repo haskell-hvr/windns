@@ -14,7 +14,7 @@ hs_free_record(DNS_RECORDA *data)
 
 
 static inline DNS_RECORDA *
-hs_dns_query(const char *hostname, DWORD wtype, long *pstat)
+hs_dns_query(const char *hostname, WORD wtype, long *pstat)
 {
   DNS_RECORDA *data = NULL;
   DNS_STATUS status = DnsQuery_A(hostname, wtype, DNS_QUERY_STANDARD, NULL, &data, NULL);
