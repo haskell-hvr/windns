@@ -19,7 +19,9 @@ import           Control.Monad
 import           Data.Bits
 import           Data.ByteString (ByteString)
 import qualified Data.ByteString as BS
+import qualified Data.Foldable as F
 import           Data.Int
+import qualified Data.Traversable as T
 import           Data.Word
 import           Foreign.C.Types
 import           Foreign.Marshal.Alloc
@@ -97,7 +99,7 @@ data SRV l = SRV { srvPriority :: !Word16
                  , srvWeight   :: !Word16
                  , srvPort     :: !Word16
                  , srvTarget   :: !l
-                 } deriving (Eq,Read,Show,Functor,Foldable,Traversable)
+                 } deriving (Eq,Read,Show,Functor,F.Foldable,T.Traversable)
 
 instance NFData l => NFData (SRV l) where
   rnf (SRV _ _ _ l) = rnf l
