@@ -8,7 +8,7 @@ license:             GPL-2
 license-files:       LICENSE LICENSE.GPLv2 LICENSE.GPLv3
 author:              Herbert Valerio Riedel
 maintainer:          hvr@gnu.org
-bug-reports:         https://github.com/hvr/resolv/issues
+bug-reports:         https://github.com/hvr/windns/issues
 
 category:            Network
 build-type:          Simple
