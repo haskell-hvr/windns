@@ -28,3 +28,4 @@ build: off
 test_script:
  - "echo packages:. > cabal.project"
  - "cabal %CABOPTS% new-build -j1 all"
+ - "cabal new-build -j1 all \"--constraint=bytestring>=0.11\""
