@@ -4,7 +4,8 @@ environment:
   global:
     CABOPTS:  "--store-dir=C:\\SR --http-transport=plain-http"
   matrix:
-    - GHCVER: "8.10.2"
+    - GHCVER: "9.0.1"
+    - GHCVER: "8.10.4"
     - GHCVER: "8.8.4"
     - GHCVER: "8.6.5"
     - GHCVER: "8.4.4"
