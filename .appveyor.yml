@@ -4,7 +4,11 @@ environment:
   global:
     CABOPTS:  "--store-dir=C:\\SR --http-transport=plain-http"
   matrix:
-    - GHCVER: "8.8.1"
+    - GHCVER: "9.0.1"
+    - GHCVER: "8.10.4"
+    - GHCVER: "8.8.4"
+    - GHCVER: "8.6.5"
+    - GHCVER: "8.4.4"
     - GHCVER: "8.2.2"
     - GHCVER: "8.0.2"
 
@@ -24,3 +28,4 @@ build: off
 test_script:
  - "echo packages:. > cabal.project"
  - "cabal %CABOPTS% new-build -j1 all"
+ - "cabal new-build -j1 all \"--constraint=bytestring>=0.11\""
