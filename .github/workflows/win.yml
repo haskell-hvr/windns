@@ -1,0 +1,23 @@
+name: Build (Windows)
+on:
+  push:
+    branches: [ master, ci-* ]
+  pull_request:
+    branches: [ master, ci-* ]
+
+jobs:
+  build:
+    name: Build (GHC ${{ matrix.ghc }})
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        ghc: ['9.6', '9.4', '9.2', '9.0', '8.10', '8.8', '8.6', '8.4', '8.2', '8.0']
+    steps:
+    - uses: actions/checkout@v3
+    - uses: haskell/actions/setup@v2
+      with:
+        ghc-version: ${{ matrix.ghc }}
+    - run: cabal build
+    - run: cabal haddock
+    - run: cabal check
