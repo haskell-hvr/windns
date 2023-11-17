@@ -18,6 +18,13 @@ jobs:
     - uses: haskell-actions/setup@v2
       with:
         ghc-version: ${{ matrix.ghc }}
+
+    - name: "Work around haskell/hsc2hs#81: hsc2hs-0.68.10 fails to build with GHC < 8.4"
+      if:  matrix.ghc < 8.4
+      run: |
+        echo "constraints: any.hsc2hs < 0.68.10" > cabal.project.local
+      shell: bash
+
     - run: cabal build
     - run: cabal haddock
     - run: cabal check
